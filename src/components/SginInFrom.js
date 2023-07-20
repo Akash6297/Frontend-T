@@ -11,7 +11,7 @@ const SignInForm = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/signin', { email, password });
+      await axios.post('https://trible-trands.onrender.com/api/signin', { email, password });
       alert('Signed in successfully');
       // Redirect to the home page after successful sign-in
       history.push('/home');

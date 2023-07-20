@@ -13,7 +13,7 @@ const ContactForm = () => {
     setIsSending(true);
 
     try {
-      await axios.post('http://localhost:5000/api/contact', { name, email, message });
+      await axios.post('https://trible-trands.onrender.com/api/contact', { name, email, message });
       setIsSent(true);
       // Clear form fields after successful submission
       setName('');

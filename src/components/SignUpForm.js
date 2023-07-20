@@ -9,7 +9,7 @@ const SignUpForm = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/signup', { email, password });
+      await axios.post('https://trible-trands.onrender.com/api/signup', { email, password });
       alert('User registered successfully');
     } catch (error) {
       alert('An error occurred during registration');
