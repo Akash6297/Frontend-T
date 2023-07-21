@@ -1,20 +1,27 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
-    <nav className="navbar">
-      <div className="navbar-container" >
-      
-        <Link to="/" className="logo"  >
-        
-        <img src={require('../images/Tribal.png')} alt=""/>
-          
+    <nav className={`navbar ${showMenu ? 'show' : ''}`}>
+      <div className="navbar-container">
+        <Link to="/" className="logo">
+          <img src={require('../images/Tribal.png')} alt="" />
         </Link>
-        
-        
-        <ul className="nav-links">
+
+        <div className="menu-icon" onClick={toggleMenu}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+
+        <ul className={`nav-links ${showMenu ? 'show' : ''}`}>
           <li>
             <Link to="/home">Home</Link>
           </li>
@@ -26,6 +33,16 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <button className="sign-up">
+              <Link to="/signup">Sign Up</Link>
+            </button>
+          </li>
+          <li>
+            <button className="sign-in">
+              <Link to="/signin">Sign In</Link>
+            </button>
           </li>
           {/* Add more nav links as needed */}
         </ul>
