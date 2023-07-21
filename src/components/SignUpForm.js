@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
+    <div className="contact-form">
       <h2>Sign Up</h2>
       <form onSubmit={handleSignUp}>
         <input
@@ -39,6 +40,10 @@ const SignUpForm = () => {
           required
         />
         <button type="submit">Sign Up</button>
+        <p>Already have a Account?</p>
+        
+          <Link to="/signin">Sign In</Link>
+        
       </form>
     </div>
   );
