@@ -70,7 +70,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('hhttps://trible-trands.onrender.com/api/products');
+      const response = await fetch('https://trible-trands.onrender.com/api/products');
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -92,7 +92,7 @@ const Products = () => {
     <div>
     <h2>Products</h2>
     <div className="product-list">
-     {filteredProducts.map((product) => (
+  {filteredProducts.map((product) => (
      <div key={product.id} className="product-item">
        <img src={product.image} alt={product.name} />
             <h4>{product.name}</h4>
