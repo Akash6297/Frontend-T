@@ -282,7 +282,7 @@ body {
 }
 
 .product-item img {
-  max-width: 100%;
+  height: 250px;
 }
 
 .product-item h4 {
