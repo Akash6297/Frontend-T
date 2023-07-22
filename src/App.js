@@ -18,7 +18,7 @@ const App = () => {
       <Navbar />
       <div className="container"> {/* Add container class */}
         <Switch>
-          <Route exact path="/" component={SignUpForm} />
+          <Route exact path="/" component={Home} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/signin" component={SignInForm} />
           <Route path="/home" component={Home} />
