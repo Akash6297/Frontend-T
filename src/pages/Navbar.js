@@ -29,7 +29,15 @@ const Navbar = () => {
             <Link to="/products">Products</Link>
           </li>
           <li>
-            <Link to="/categories">Categories</Link>
+            <Link to="/categories">Categories
+            <select>
+            <option value="Dresses" >Dresses</option>
+            <option value="Tops">Tops</option>
+            <option value="Pants">Pants</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Accessories">Accessories</option>
+            </select>
+            </Link>
           </li>
           <li>
             <Link to="/contact">Contact</Link>
