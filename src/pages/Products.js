@@ -127,10 +127,10 @@ const Products = () => {
 
   return (
     <div>
-      <h2>Products</h2>
+      <h1>Products</h1>
       {categories.map((cat) => (
         <div key={cat}>
-          <h3>{cat}</h3>
+          <h2>{cat}</h2>
           <div className="product-list">
             {filteredProducts
               .filter((product) => product.category === cat)

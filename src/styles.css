@@ -11,7 +11,8 @@ body {
     padding: 20px;
   }
   
-  h2 {
+  h1 {
+    font-family: Big Shoulders Inline Text,cursive;
     text-align: center;
   }
   
@@ -286,6 +287,7 @@ body {
 }
 
 .product-item h4 {
+  /* font-family: Big Shoulders Inline Text; */
   margin: 10px 0;
 }
 
