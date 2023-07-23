@@ -13,7 +13,7 @@ export default class Reset extends Component {
         e.preventDefault();
         const { email } = this.state;
         console.log(email );
-
+       
         fetch("https://trible-trands.onrender.com/forgot-password", {
 
             method:"POST",
@@ -26,7 +26,7 @@ export default class Reset extends Component {
             body:JSON.stringify({
               email,
               
-            }),
+            }), 
         }).then((res)=>res.json())
     .then((data)=>{
       console.log(data, "userRegister");
