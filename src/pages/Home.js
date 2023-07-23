@@ -59,8 +59,6 @@ const Home = () => {
             <div key={product.id} className="product-item">
               <img src={product.image} alt={product.name} />
               <h4>{product.name}</h4>
-              <p>${product.price.toFixed(2)}</p>
-              
             </div>
           ))}
         </div>
