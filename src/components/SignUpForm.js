@@ -12,6 +12,8 @@ const SignUpForm = () => {
     try {
       await axios.post('https://trible-trands.onrender.com/api/signup', { email, password });
       alert('User registered successfully');
+      // Redirect to the home page after successful sign-in
+      window.location.href = "/signin";
     } catch (error) {
       alert('An error occurred during registration');
     }

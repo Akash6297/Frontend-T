@@ -47,6 +47,9 @@ const SignInForm = () => {
         <p>Don't have a Account?</p>
         
           <Link to="/signup">Sign Up</Link>
+
+          <br/>
+            <a href="/reset">Forgot?</a>
         
       </form>
     </div>

@@ -9,6 +9,7 @@ import Categories from './pages/Categories';
 import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import Contact from './components/ContactForm'; 
+import Reset from "./components/reset";
 import './styles.css'; // Import the CSS file
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={SignUpForm} />
           <Route path="/signin" component={SignInForm} />
+          <Route path="/reset" component={Reset } />
           <Route path="/home" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/products">
