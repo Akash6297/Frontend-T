@@ -1,7 +1,8 @@
 import React from 'react';
 
 const Cart = ({ cartItems, removeItem }) => {
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  // const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.count, 0);
 
   return (
     <div className="cart">
@@ -13,7 +14,10 @@ const Cart = ({ cartItems, removeItem }) => {
           <ul className="cart-items">
             {cartItems.map((item) => (
               <li key={item.id}>
+                
+                <span><img className="cart-img" src={item.image} alt={item.name} /></span>
                 <span>{item.name}</span>
+                <span>Count: {item.count}</span>
                 <span className='cart-price'>${item.price.toFixed(2)}</span>
                 <td></td>
                 <td></td>
