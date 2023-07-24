@@ -16,7 +16,7 @@ const Cart = ({ cartItems, removeItem }) => {
     // You can use this data to create an order, etc.
 
     // After processing, redirect to the "Orders" page
-    history.push('/orders');
+    history.push('/');
   };
 
   return (
