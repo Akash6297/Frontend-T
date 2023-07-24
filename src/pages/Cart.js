@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import OrderForm from './OrderForm'; // Corrected import statement
 
@@ -8,17 +8,35 @@ const Cart = ({ cartItems, removeItem }) => {
   // State variable to track the visibility of the popup form
   const [isFormVisible, setIsFormVisible] = useState(false);
 
+  // State variable to track if the cart has been updated
+  const [cartUpdated, setCartUpdated] = useState(false);
+
   const history = useHistory(); // Get the history object from react-router-dom
 
   // Function to handle form submission from the popup form
   const handleFormSubmit = (formData) => {
     // Process the form data, e.g., save it to the database or perform any required actions.
     // You can use this data to create an order, etc.
-
+    window.alert('Order submitted successfully! Thank you for your purchase.');
     // After processing, redirect to the "Orders" page
     history.push('/');
   };
 
+  // useEffect to show alert whenever cartItems change or cart is updated
+  useEffect(() => {
+    if (cartUpdated) {
+      alert('Shopping Cart Updated!');
+      setCartUpdated(false);
+    }
+  }, [cartItems, cartUpdated]);
+
+  // Function to handle remove item from cart
+  const handleRemoveItem = (itemId) => {
+    removeItem(itemId);
+    setCartUpdated(true);
+  };
+
+ 
   return (
     <div className="cart">
       <h2>Shopping Cart</h2>
@@ -35,10 +53,7 @@ const Cart = ({ cartItems, removeItem }) => {
                 <span>{item.name}</span>
                 <span>Count: {item.count}</span>
                 <span className="cart-price">${item.price.toFixed(2)}</span>
-                <td></td>
-                <td></td>
-                <td></td>
-                <button onClick={() => removeItem(item.id)}>Remove</button>
+                <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
               </li>
             ))}
           </ul>
