@@ -10,6 +10,8 @@ import Cart from './pages/Cart';
 import Footer from './components/Footer';
 import Contact from './components/ContactForm'; 
 import Reset from "./components/reset";
+import Orders from "./pages/Orders";
+import OrderForm from './pages/OrderForm';
 import './styles.css'; // Import the CSS file
 
 const App = () => {
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/reset" component={Reset } />
           <Route path="/home" component={Home} />
           <Route path="/contact" component={Contact} />
+          <Route path="/orders" component={Orders} />
+          <Route path="/orderform" component={OrderForm} />
           <Route path="/products">
               <Products />
             </Route>
