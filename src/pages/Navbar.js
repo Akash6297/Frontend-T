@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -13,9 +13,28 @@ const Navbar = () => {
     setShowDropdown(!showDropdown);
   };
 
-  const closeDropdown = () => {
-    setShowDropdown(false);
+  const closeMenu = () => {
+    setShowMenu(false);
   };
+
+  useEffect(() => {
+    // Add event listener to close the menu when a link inside the menu is clicked
+    const handleLinkClick = () => {
+      setShowMenu(false);
+    };
+
+    const links = document.querySelectorAll('.nav-links a, .nav-links button');
+    links.forEach((link) => {
+      link.addEventListener('click', handleLinkClick);
+    });
+
+    return () => {
+      // Clean up the event listener on unmount
+      links.forEach((link) => {
+        link.removeEventListener('click', handleLinkClick);
+      });
+    };
+  }, []);
 
   return (
     <nav className={`navbar ${showMenu ? 'show' : ''}`}>
@@ -32,43 +51,45 @@ const Navbar = () => {
 
         <ul className={`nav-links ${showMenu ? 'show' : ''}`}>
           <li>
-            <Link to="/home" onClick={closeDropdown}>
+            <Link to="/home" onClick={closeMenu}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/products" onClick={closeDropdown}>
+            <Link to="/products" onClick={closeMenu}>
               Products
             </Link>
           </li>
           <li>
             <div className="dropdown-container" onClick={toggleDropdown}>
+              
                 Categories
                 <i className={`fas ${showDropdown ? 'fa-caret-up' : 'fa-caret-down'}`}></i>
+              
               {showDropdown && (
                 <ul className="dropdown-menu">
                   <li>
-                    <Link to="/dresses" onClick={closeDropdown}>
+                    <Link to="/dresses" onClick={closeMenu}>
                       Dresses
                     </Link>
                   </li>
                   <li>
-                    <Link to="/tops" onClick={closeDropdown}>
+                    <Link to="/tops" onClick={closeMenu}>
                       Tops
                     </Link>
                   </li>
                   <li>
-                    <Link to="/pants" onClick={closeDropdown}>
+                    <Link to="/pants" onClick={closeMenu}>
                       Pants
                     </Link>
                   </li>
                   <li>
-                    <Link to="/shoes" onClick={closeDropdown}>
+                    <Link to="/shoes" onClick={closeMenu}>
                       Shoes
                     </Link>
                   </li>
                   <li>
-                    <Link to="/accessories" onClick={closeDropdown}>
+                    <Link to="/accessories" onClick={closeMenu}>
                       Accessories
                     </Link>
                   </li>
@@ -77,21 +98,25 @@ const Navbar = () => {
             </div>
           </li>
           <li>
-            <Link to="/contact" onClick={closeDropdown}>
+            <Link to="/contact" onClick={closeMenu}>
               Contact
             </Link>
           </li>
           <li>
-              <Link to="/signup" onClick={closeDropdown}>
+           
+              <Link to="/signup" onClick={closeMenu}>
                 Sign Up
               </Link>
+         
           </li>
           <li>
-              <Link to="/signin" onClick={closeDropdown}>
+            
+              <Link to="/signin" onClick={closeMenu}>
                 Sign In
               </Link>
+           
           </li>
-         
+          {/* Add more nav links as needed */}
         </ul>
       </div>
     </nav>
