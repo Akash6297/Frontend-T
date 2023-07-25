@@ -24,13 +24,16 @@ const Cart = ({ cartItems, removeItem }) => {
 
   // useEffect to show alert whenever cartItems change or cart is updated
   useEffect(() => {
-    alert('Shopping Cart Updated!');
+    if (cartItems.length > 0) {
+      alert('Added to Shopping Cart !!');
+    }
     
   }, [cartItems,]);
   useEffect(() => {
-    alert('Successfully Remove Item !');
-    
-  }, [cartUpdated,]);
+    if (cartUpdated  > 0) {
+      alert('Successfully Remove Your Item !!');
+    }
+  }, [cartUpdated, ]);
 
   // Function to handle remove item from cart
   const handleRemoveItem = (itemId) => {
