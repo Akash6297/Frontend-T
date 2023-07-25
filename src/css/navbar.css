@@ -125,3 +125,59 @@
     }
   }
   
+/* Add this to your existing navbar.css */
+
+.nav-links .dropdown-button {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links .dropdown-button i {
+  margin-left: 5px;
+}
+
+.dropdown-menu {
+  /* ... other styles ... */
+  display: none;
+  position: absolute;
+  top: 100%; /* Position the dropdown below the button */
+  left: 0;
+  background-color: #333;
+  width: 200px;
+  list-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+  margin-bottom: 5px;
+}
+
+.dropdown-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f39c12;
+}
+
+.nav-links li:hover .dropdown-menu {
+  display: block;
+}
+.nav-links .dropdown-container {
+  position: relative; /* Add this line to ensure the dropdown is positioned relative to the container */
+  display: inline-block; /* Display the container as an inline-block to fit the width of the content */
+}
+

@@ -26,7 +26,7 @@ const Home = () => {
       <center>
       <h1>Welcome to Our Clothing Store!</h1>
       </center>
-      <img className='banner' src={require('../images/B1.png')} alt=""/>
+      <img className='banner' src={require('../images/B1.webp')} alt=""/>
       {/* Category Links */}
       <section>
         <center><h1>Categories</h1></center>

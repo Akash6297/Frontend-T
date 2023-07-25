@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
+  };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const closeDropdown = () => {
+    setShowDropdown(false);
   };
 
   return (
@@ -23,28 +32,66 @@ const Navbar = () => {
 
         <ul className={`nav-links ${showMenu ? 'show' : ''}`}>
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/home" onClick={closeDropdown}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <Link to="/products" onClick={closeDropdown}>
+              Products
+            </Link>
           </li>
           <li>
-            <Link to="/categories">Categories</Link>
+            <div className="dropdown-container" onClick={toggleDropdown}>
+                Categories
+                <i className={`fas ${showDropdown ? 'fa-caret-up' : 'fa-caret-down'}`}></i>
+              {showDropdown && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/dresses" onClick={closeDropdown}>
+                      Dresses
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/tops" onClick={closeDropdown}>
+                      Tops
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/pants" onClick={closeDropdown}>
+                      Pants
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/shoes" onClick={closeDropdown}>
+                      Shoes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/accessories" onClick={closeDropdown}>
+                      Accessories
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact" onClick={closeDropdown}>
+              Contact
+            </Link>
           </li>
           <li>
-            <button className="sign-up">
-              <Link to="/signup">Sign Up</Link>
-            </button>
+              <Link to="/signup" onClick={closeDropdown}>
+                Sign Up
+              </Link>
           </li>
           <li>
-            <button className="sign-in">
-              <Link to="/signin">Sign In</Link>
-            </button>
+              <Link to="/signin" onClick={closeDropdown}>
+                Sign In
+              </Link>
           </li>
-          {/* Add more nav links as needed */}
+         
         </ul>
       </div>
     </nav>
