@@ -12,7 +12,13 @@ import Contact from './components/ContactForm';
 import Reset from "./components/reset";
 import OrderForm from './pages/OrderForm';
 import './styles.css'; // Import the CSS file
-
+import './css/Popup.css';
+import './css/navbar.css';
+import './css/Categories.css';
+import './css/cart.css';
+import './css/Products.css';
+import './css/footer.css';
+import './css/contactForm.css';
 const App = () => {
   return (
     <Router>

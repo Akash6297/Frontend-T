@@ -1,0 +1,40 @@
+/* Categories.css */
+section {
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .category-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .category-list li {
+    margin: 10px;
+  }
+  
+  .category-list li a {
+    display: block;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.2s;
+  }
+  
+  .category-list li a:hover {
+    background-color: #0056b3;
+  }
