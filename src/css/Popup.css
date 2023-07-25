@@ -60,5 +60,5 @@
   
   /* Add this CSS to center the form on the popup */
   .popup .order-form {
-    max-width: 400px;
+    width: 100%;
   }
