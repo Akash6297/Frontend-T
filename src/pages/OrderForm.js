@@ -12,6 +12,11 @@ const OrderForm = ({ onSubmit, selectedProduct, totalPrice }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+       // Create an array to store product names and their counts
+       const products = selectedProduct.map((item) => ({
+        name: item.name,
+        count: item.count,
+      }));
     const orderData = {
       name,
       email,
@@ -21,6 +26,7 @@ const OrderForm = ({ onSubmit, selectedProduct, totalPrice }) => {
       state,
       district,
       selectedProduct,
+      products,
       count: selectedProduct.reduce((total, item) => total + item.count, 0),
       totalPrice,
       isCashOnDelivery,
