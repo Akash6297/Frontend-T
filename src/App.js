@@ -24,7 +24,7 @@ import './css/AuthPage.css';
 import AuthPage from './pages/AuthPage';
 const App = () => {
   const [signedInUser, setSignedInUser] = useState({});
-
+  const [cartItems, setCartItems] = useState([]);
 
     // Function to handle successful sign-in
     const handleSignInSuccess = (userData) => {
@@ -54,11 +54,51 @@ const App = () => {
     }
   }, []);
 
+  const handleAddToCart = (product) => {
+    setCartItems((prevItems) => {
+      // Check if the item already exists in the cart
+      const existingItem = prevItems.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        // If the item already exists, increase the count by 1
+        return prevItems.map((item) =>
+          item.id === product.id ? { ...item, count: item.count + 1 } : item
+        );
+      } else {
+        // If the item is not in the cart, add it with count 1
+        return [...prevItems, { ...product, count: 1 }];
+      }
+    });
+  };
+
+  const handleRemoveItem = (itemId) => {
+    setCartItems((prevItems) => {
+      // Check if the item exists in the cart
+      const existingItem = prevItems.find((item) => item.id === itemId);
+
+      if (existingItem) {
+        // If the item count is more than 1, decrease the count by 1
+        if (existingItem.count > 1) {
+          return prevItems.map((item) =>
+            item.id === itemId ? { ...item, count: item.count - 1 } : item
+          );
+        } else {
+          // If the item count is 1 or less, remove the item from the cart
+          return prevItems.filter((item) => item.id !== itemId);
+        }
+      } else {
+        return prevItems;
+      }
+    });
+  };
+
   return (
     <Router>
       <div>
       {/* <Navbar /> */}
-      <Navbar signedInUser={signedInUser} handleSignOut={handleSignOut} />
+      <Navbar signedInUser={signedInUser} 
+      cartItems={cartItems} // Pass cartItems to Navbar
+      handleSignOut={handleSignOut} />
       <div className="container"> {/* Add container class */}
         <Switch>
           <Route exact path="/" component={Home} />
@@ -72,14 +112,21 @@ const App = () => {
           <Route path="/home" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/orderform" component={OrderForm} />
-          <Route path="/products">
-              <Products />
+          
+            <Route path="/products">
+              {/* Pass cartItems, handleAddToCart, and setCartItems to the Products page */}
+              <Products
+                cartItems={cartItems}
+                handleAddToCart={handleAddToCart}
+                setCartItems={setCartItems}
+              />
             </Route>
             <Route path="/categories" component={Categories} />
             <Route path="/cart">
-              <Cart cartItems={[]} />
-              </Route>
-          <Redirect to="/" />
+              {/* Pass cartItems and the removeItem function to the Cart page */}
+              <Cart cartItems={cartItems} removeItem={handleRemoveItem} />
+            </Route>
+            <Redirect to="/" />
         </Switch>
       </div>
       <Footer />

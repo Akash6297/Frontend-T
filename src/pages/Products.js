@@ -1,10 +1,11 @@
-// Product.js
+// Products.js
 import React, { useState, useEffect } from 'react';
 import Cart from './Cart';
 import { useParams } from 'react-router-dom';
+import '../css/FloatingCartIcon.css';
+import FloatingCartIcon from './FloatingCartIcon';
 
-const Products = () => {
-  const [cartItems, setCartItems] = useState([]);
+const Products = ({ cartItems, handleAddToCart, setCartItems }) => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
 
@@ -47,7 +48,8 @@ const Products = () => {
     });
   };
 
-  const handleAddToCart = (product) => {
+  // Handle adding a product to the cart
+  const addToCart = (product) => {
     setCartItems((prevItems) => {
       // Check if the item already exists in the cart
       const existingItem = prevItems.find((item) => item.id === product.id);
@@ -63,11 +65,10 @@ const Products = () => {
       }
     });
   };
-    // Calculate the total price for all items in the cart
-    
 
   return (
     <div>
+      <img className='banner' src={require('../images/B4.webp')} alt=""/>
       <h1>Products</h1>
       {categories.map((cat) => (
         <div key={cat}>
@@ -80,7 +81,7 @@ const Products = () => {
                   <img src={product.image} alt={product.name} />
                   <h4>{product.name}</h4>
                   <p>₹{product.price.toFixed(2)}</p>
-                  <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                  <button onClick={() => addToCart(product)}>Add to Cart</button>
                   
                 </div>
               ))}
@@ -91,7 +92,8 @@ const Products = () => {
       <br />
       <br />
       <br />
-      <Cart cartItems={cartItems} removeItem={handleRemoveItem} /> {/* Pass removeItem as a prop */}
+      <Cart cartItems={cartItems} removeItem={handleRemoveItem} />
+      <FloatingCartIcon />
     </div>
   );
 };

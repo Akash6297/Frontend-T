@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-const Navbar = ({ signedInUser, handleSignOut  }) => {
+import '../css/FloatingCartIcon.css';
+const Navbar = ({ signedInUser, handleSignOut, cartItems  }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -58,6 +58,17 @@ const Navbar = ({ signedInUser, handleSignOut  }) => {
           <li>
             <Link to="/products" onClick={closeMenu}>
               Products
+            </Link>
+          </li>
+          <li>
+            <Link to="/cart" onClick={closeMenu}>
+              <div className="cart-icon">
+                <i className="fas fa-shopping-cart"></i>
+                {cartItems.length > 0 && (
+                  <span className="cart-item-count">{cartItems.length}</span>
+                )}
+              </div>
+              Cart
             </Link>
           </li>
           <li>
