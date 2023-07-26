@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
 
-const SignInForm = () => {
+const SignInForm = ({ handleSignInSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
@@ -13,6 +13,8 @@ const SignInForm = () => {
     try {
       await axios.post('https://trible-trands.onrender.com/api/signin', { email, password });
       alert('Signed in successfully');
+      // Call the parent component function to handle successful sign-in
+      handleSignInSuccess();
       // Redirect to the home page after successful sign-in
       history.push('/home');
     } catch (error) {
@@ -25,7 +27,6 @@ const SignInForm = () => {
   };
 
   return (
-    
     <div className="contact-form">
       <h2>Sign In</h2>
       <form onSubmit={handleSignIn}>
@@ -44,16 +45,12 @@ const SignInForm = () => {
           required
         />
         <button type="submit">Sign In</button>
-        <p>Don't have a Account?</p>
-        
-          <Link to="/signup">Sign Up</Link>
-
-          <br/>
-            <a href="/reset">Forgot?</a>
-        
+        <p>Don't have an Account?</p>
+        <Link to="/signup">Sign Up</Link>
+        <br/>
+        <a href="/reset">Forgot?</a>
       </form>
     </div>
-    
   );
 };
 

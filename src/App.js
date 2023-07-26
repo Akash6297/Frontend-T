@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SignUpForm from './components/SignUpForm';
 import SignInForm from './components/SginInFrom';
@@ -19,16 +19,43 @@ import './css/cart.css';
 import './css/Products.css';
 import './css/footer.css';
 import './css/contactForm.css';
+import './css/AuthPage.css';
+
+import AuthPage from './pages/AuthPage';
 const App = () => {
+  const [signedInUser, setSignedInUser] = useState({});
+
+  const handleSignInSuccess = (userData) => {
+    setSignedInUser(userData);
+
+    // Set a timer to automatically sign out the user after 5 minutes
+    setTimeout(() => {
+      handleSignOut();
+    }, 5 * 60 * 1000); // 5 minutes (5 * 60 seconds * 1000 milliseconds)
+  };
+
+  const handleSignOut = () => {
+    setSignedInUser(null);
+
+    // Clear the user data from localStorage
+    localStorage.removeItem('signedInUser');
+  };
   return (
     <Router>
       <div>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Navbar signedInUser={signedInUser} handleSignOut={handleSignOut} />
       <div className="container"> {/* Add container class */}
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/signup" component={SignUpForm} />
-          <Route path="/signin" component={SignInForm} />
+          {/* <Route path="/signup" component={SignUpForm} />
+          <Route path="/signin" component={SignInForm} /> */}
+         <Route path="/signin" component={SignInForm}>
+          <AuthPage handleSignInSuccess={handleSignInSuccess} />
+        </Route>
+        <Route path="/signup" component={SignUpForm}>
+          <AuthPage handleSignInSuccess={handleSignInSuccess} />
+        </Route>
           <Route path="/reset" component={Reset } />
           <Route path="/home" component={Home} />
           <Route path="/contact" component={Contact} />

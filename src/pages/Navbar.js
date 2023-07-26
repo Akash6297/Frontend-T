@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ signedInUser, handleSignOut  }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -102,7 +102,7 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          <li>
+          {/* <li>
            
               <Link to="/signup" onClick={closeMenu}>
                 Sign Up
@@ -115,7 +115,37 @@ const Navbar = () => {
                 Sign In
               </Link>
            
+          </li> */}
+
+<li>
+            {/* Conditionally render the user's name, Sign Out, or Sign In */}
+            {signedInUser ? (
+              <>
+                <span>{signedInUser.name}</span>
+                <button onClick={handleSignOut}>Sign Out</button>
+                {/* <span onClick={handleSignOut}>Sign Out</span> */}
+              </>
+            ) : (
+              <Link to="/signin" onClick={closeMenu}>
+                Sign In
+              </Link>
+            )}
           </li>
+          <li>
+            {/* Conditionally render the user's image or Sign Up */}
+            {/* {signedInUser ? (
+              <img src={signedInUser.imageUrl} alt="Profile" />
+            ) : (
+              <Link to="/signup" onClick={closeMenu}>
+                Sign Up
+              </Link>
+            )} */}
+
+              <Link to="/signup" onClick={closeMenu}>
+                Sign Up
+              </Link>
+          </li>
+
           {/* Add more nav links as needed */}
         </ul>
       </div>
