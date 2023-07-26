@@ -102,28 +102,14 @@ const Navbar = ({ signedInUser, handleSignOut  }) => {
               Contact
             </Link>
           </li>
-          {/* <li>
-           
-              <Link to="/signup" onClick={closeMenu}>
-                Sign Up
-              </Link>
          
-          </li>
-          <li>
-            
-              <Link to="/signin" onClick={closeMenu}>
-                Sign In
-              </Link>
-           
-          </li> */}
-
-<li>
+          
+        <li>
             {/* Conditionally render the user's name, Sign Out, or Sign In */}
             {signedInUser ? (
               <>
                 <span>{signedInUser.name}</span>
-                <button onClick={handleSignOut}>Sign Out</button>
-                {/* <span onClick={handleSignOut}>Sign Out</span> */}
+                
               </>
             ) : (
               <Link to="/signin" onClick={closeMenu}>
@@ -133,19 +119,19 @@ const Navbar = ({ signedInUser, handleSignOut  }) => {
           </li>
           <li>
             {/* Conditionally render the user's image or Sign Up */}
-            {/* {signedInUser ? (
-              <img src={signedInUser.imageUrl} alt="Profile" />
+            {signedInUser ? (
+          
+              <Link  onClick={handleSignOut}>
+              Sign Out
+            </Link>
             ) : (
               <Link to="/signup" onClick={closeMenu}>
                 Sign Up
               </Link>
-            )} */}
+            )}
 
-              <Link to="/signup" onClick={closeMenu}>
-                Sign Up
-              </Link>
           </li>
-
+        
           {/* Add more nav links as needed */}
         </ul>
       </div>
