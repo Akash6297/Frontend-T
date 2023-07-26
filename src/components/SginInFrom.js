@@ -45,10 +45,11 @@ const SignInForm = ({ handleSignInSuccess }) => {
           required
         />
         <button type="submit">Sign In</button>
-        <p>Don't have an Account?</p>
+        {/* <a href="/reset">Forgot?</a> */}
+        <p>Don't have an Account?
         <Link to="/signup">Sign Up</Link>
-        <br/>
-        <a href="/reset">Forgot?</a>
+        </p>
+        
       </form>
     </div>
   );
