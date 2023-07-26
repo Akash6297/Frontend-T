@@ -108,8 +108,11 @@ const Navbar = ({ signedInUser, handleSignOut  }) => {
             {/* Conditionally render the user's name, Sign Out, or Sign In */}
             {signedInUser ? (
               <>
-                <span>{signedInUser.name}</span>
-                
+              <Link>
+             
+                Welcome back..
+                {signedInUser.name}
+                </Link>  
               </>
             ) : (
               <Link to="/signin" onClick={closeMenu}>
