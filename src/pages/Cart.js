@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import OrderForm from './OrderForm'; // Corrected import statement
 
-const Cart = ({ cartItems,removeItem}) => {
+const Cart = ({ cartItems,removeItem, handleOrderSubmitted }) => {
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.count, 0);
 
   // State variable to track the visibility of the popup form
@@ -19,16 +19,16 @@ const Cart = ({ cartItems,removeItem}) => {
     // You can use this data to create an order, etc.
     window.alert('Order submitted successfully! Thank you for your purchase.');
     // After processing, redirect to the "Orders" page
+   // After processing, reset the cart and hide the OrderForm
+   setCartUpdated(true);
+   setIsFormVisible(false);
+   // Trigger the handleOrderSubmitted callback
+   handleOrderSubmitted();
     history.push('/');
   };
 
   // useEffect to show alert whenever cartItems change or cart is updated
-  // useEffect(() => {
-  //   if (cartItems.length > 0) {
-  //     alert('Added to Shopping Cart !!');
-  //   }
-    
-  // }, [cartItems,]);
+ 
   useEffect(() => {
     if (cartUpdated  > 0) {
       alert('Successfully Remove Your Item !!');

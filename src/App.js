@@ -91,7 +91,9 @@ const App = () => {
       }
     });
   };
-
+  const handleOrderSubmitted = () => {
+    setCartItems([]); // Clear the cart items after order submission
+  };
   return (
     <Router>
       <div>
@@ -124,7 +126,10 @@ const App = () => {
             <Route path="/categories" component={Categories} />
             <Route path="/cart">
               {/* Pass cartItems and the removeItem function to the Cart page */}
-              <Cart cartItems={cartItems} removeItem={handleRemoveItem} />
+              <Cart cartItems={cartItems} 
+              removeItem={handleRemoveItem}
+              handleOrderSubmitted={handleOrderSubmitted}
+               />
             </Route>
             <Redirect to="/" />
         </Switch>
