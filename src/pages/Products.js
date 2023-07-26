@@ -27,26 +27,6 @@ const Products = ({ cartItems, handleAddToCart, setCartItems }) => {
 
   const categories = ['Dresses', 'Tops', 'Pants', 'Shoes', 'Accessories'];
 
-  // const handleRemoveItem = (itemId) => {
-  //   setCartItems((prevItems) => {
-  //     // Check if the item exists in the cart
-  //     const existingItem = prevItems.find((item) => item.id === itemId);
-
-  //     if (existingItem) {
-  //       // If the item count is more than 1, decrease the count by 1
-  //       if (existingItem.count > 1) {
-  //         return prevItems.map((item) =>
-  //           item.id === itemId ? { ...item, count: item.count - 1 } : item
-  //         );
-  //       } else {
-  //         // If the item count is 1 or less, remove the item from the cart
-  //         return prevItems.filter((item) => item.id !== itemId);
-  //       }
-  //     } else {
-  //       return prevItems;
-  //     }
-  //   });
-  // };
 
   // Handle adding a product to the cart
   const addToCart = (product) => {

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import OrderForm from './OrderForm'; // Corrected import statement
 
-const Cart = ({ cartItems}) => {
+const Cart = ({ cartItems,removeItem}) => {
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.count, 0);
 
   // State variable to track the visibility of the popup form
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   // State variable to track if the cart has been updated
-  const [cartUpdated,setCartItems] = useState(false);
+  const [cartUpdated,setCartUpdated] = useState(false);
 
   const history = useHistory(); // Get the history object from react-router-dom
 
@@ -23,12 +23,12 @@ const Cart = ({ cartItems}) => {
   };
 
   // useEffect to show alert whenever cartItems change or cart is updated
-  useEffect(() => {
-    if (cartItems.length > 0) {
-      alert('Added to Shopping Cart !!');
-    }
+  // useEffect(() => {
+  //   if (cartItems.length > 0) {
+  //     alert('Added to Shopping Cart !!');
+  //   }
     
-  }, [cartItems,]);
+  // }, [cartItems,]);
   useEffect(() => {
     if (cartUpdated  > 0) {
       alert('Successfully Remove Your Item !!');
@@ -36,31 +36,11 @@ const Cart = ({ cartItems}) => {
   }, [cartUpdated, ]);
 
   // Function to handle remove item from cart
-  // const handleRemoveItem = (itemId) => {
-  //   removeItem(itemId);
-  //   setCartUpdated(true);
-  // };
-
   const handleRemoveItem = (itemId) => {
-    setCartItems((prevItems) => {
-      // Check if the item exists in the cart
-      const existingItem = prevItems.find((item) => item.id === itemId);
-
-      if (existingItem) {
-        // If the item count is more than 1, decrease the count by 1
-        if (existingItem.count > 1) {
-          return prevItems.map((item) =>
-            item.id === itemId ? { ...item, count: item.count - 1 } : item
-          );
-        } else {
-          // If the item count is 1 or less, remove the item from the cart
-          return prevItems.filter((item) => item.id !== itemId);
-        }
-      } else {
-        return prevItems;
-      }
-    });
+    removeItem(itemId);
+    setCartUpdated(true);
   };
+
  
   return (
     <div className="cart">
