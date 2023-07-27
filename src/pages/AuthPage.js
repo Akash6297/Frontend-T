@@ -74,6 +74,7 @@ const AuthPage = ({ handleSignInSuccess }) => {
         <Link to={isSignUp ? '/signin' : '/signup'} onClick={() => setIsSignUp(!isSignUp)}>
           {isSignUp ? 'Sign In' : 'Sign Up'}
         </Link>
+        <a href="/reset">{isSignUp ? '' : "Forgot?"}</a>
       </form>
     </div>
     </div>

@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Contact from './components/ContactForm'; 
 import Reset from "./components/reset";
 import OrderForm from './pages/OrderForm';
+import OrderPage from './pages/OrderPage';
 import './styles.css'; // Import the CSS file
 import './css/Popup.css';
 import './css/navbar.css';
@@ -20,6 +21,7 @@ import './css/Products.css';
 import './css/footer.css';
 import './css/contactForm.css';
 import './css/AuthPage.css';
+import './css/Orders.css';
 
 import AuthPage from './pages/AuthPage';
 const App = () => {
@@ -114,7 +116,10 @@ const App = () => {
           <Route path="/home" component={Home} />
           <Route path="/contact" component={Contact} />
           <Route path="/orderform" component={OrderForm} />
-          
+          <Route path="/order">
+            {/* Pass the signedInUser to the OrderPage component */}
+            <OrderPage signedInUser={signedInUser} />
+          </Route>
             <Route path="/products">
               {/* Pass cartItems, handleAddToCart, and setCartItems to the Products page */}
               <Products

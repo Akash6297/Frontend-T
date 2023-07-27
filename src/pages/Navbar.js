@@ -120,16 +120,23 @@ const Navbar = ({ signedInUser, handleSignOut, cartItems  }) => {
             
             </Link>
           </li>
-         
+          <li>
+            <Link to="/order" onClick={closeMenu}>
+              <strong>Orders</strong>
+              {/* Add an icon if desired */}
+            </Link>
+          </li>
           
         <li>
             {/* Conditionally render the user's name, Sign Out, or Sign In */}
             {signedInUser ? (
               <>
               <Link>
-             
+                
                 Welcome back..
+                <strong>
                 {signedInUser.name}
+                </strong>
                 </Link>  
               </>
             ) : (
