@@ -24,7 +24,7 @@ const Footer = () => {
         <div className="copywrite">
           <p>&copy; 2023 Tribal Trends. All rights reserved.</p>
           
-          <p>Created By - Group-K</p>
+          <p>Created By -<a href="https://akash6297.github.io/Akash-Mandal">Akash Mandal</a></p>
         </div>
       </div>
     </footer>
