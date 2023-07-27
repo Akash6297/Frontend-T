@@ -4,7 +4,10 @@
     margin: 0 auto;
     padding: 20px;
   }
-  
+ 
+  .order{
+    color: rgb(3, 138, 255);
+  }
   .order-list h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -16,8 +19,8 @@
   }
   
   .order-list li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #ffeca2;
+    border: 1px solid #132fff;
     padding: 10px;
     margin-bottom: 10px;
   }

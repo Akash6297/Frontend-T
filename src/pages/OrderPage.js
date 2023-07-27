@@ -29,10 +29,10 @@ const OrderPage = ({ signedInUser }) => {
           {orders.map((order) => (
             <li key={order._id}>
              
-              <p><strong>Name: {order.name}</strong></p>
-              <p><strong>Email: {order.email}</strong></p>
-              <p><strong>Phone:</strong> {order.phone}</p>
-              <p><strong>Address: </strong>{order.address}</p>
+              <p><strong className='order'>Name:</strong> <strong>{order.name}</strong></p>
+              <p><strong className='order'>Email: </strong> <strong>{order.email}</strong></p>
+              <p><strong className='order'>Phone:</strong> <strong>{order.phone}</strong> </p>
+              <p><strong className='order'>Address: </strong>{order.address}</p>
               <h3>Products:</h3>
               <ul>
                 {order.products.map((product, index) => (
@@ -42,8 +42,8 @@ const OrderPage = ({ signedInUser }) => {
                 ))}
               </ul>
               
-              <p><strong>Total Price: ${order.totalPrice.toFixed(2)}</strong></p>
-              <p><strong>Payment Method: {order.isCashOnDelivery ? 'Cash on Delivery' : 'Online Payment'}</strong></p>
+              <p><strong className='order'>Total Price:</strong> <strong> ${order.totalPrice.toFixed(2)}</strong></p>
+              <p><strong className='order'>Payment Method:</strong> <strong> {order.isCashOnDelivery ? 'Cash on Delivery' : 'Online Payment'}</strong></p>
 
               
               
