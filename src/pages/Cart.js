@@ -24,7 +24,7 @@ const Cart = ({ cartItems,removeItem, handleOrderSubmitted }) => {
    setIsFormVisible(false);
    // Trigger the handleOrderSubmitted callback
    handleOrderSubmitted();
-    history.push('/');
+    history.push('/order');
   };
 
   // useEffect to show alert whenever cartItems change or cart is updated
