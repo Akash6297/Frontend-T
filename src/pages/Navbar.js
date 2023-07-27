@@ -135,7 +135,7 @@ const Navbar = ({ signedInUser, handleSignOut, cartItems  }) => {
           
         <li>
             {/* Conditionally render the user's name, Sign Out, or Sign In */}
-            {signedInUser ? (
+            {signedInUser && signedInUser.name? (
               <>
               <Link>
                 
@@ -154,7 +154,7 @@ const Navbar = ({ signedInUser, handleSignOut, cartItems  }) => {
           </li>
           <li>
             {/* Conditionally render the user's image or Sign Up */}
-            {signedInUser ? (
+            {signedInUser && signedInUser.name? (
           
               <Link  onClick={handleSignOut}>
               <strong>Sign Out</strong>
